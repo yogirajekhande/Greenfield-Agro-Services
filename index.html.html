@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greenfield Agro Services - Premium biomass pellets and pellet stoves. Save 40% vs LPG. Clean energy from farm waste.">
+  <title>Greenfield Agro Services | Clean Energy Solutions</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; }
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f0fdf4; }
+    ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 4px; }
+    
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); } 50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.6); } }
+    @keyframes bounce-scroll { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    @keyframes shimmer { 0% { background-position: -100% center; } 100% { background-position: 100% center; } }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+    @keyframes gradient-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
+    /* Glass morphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(34, 197, 94, 0.15);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+    
+    /* Text gradient */
+    .gradient-text {
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+      background-size: 200% auto;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(34, 197, 94, 0.5);
+    }
+    
+    .btn-outline {
+      border: 2px solid #22c55e;
+      color: #16a34a;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: #22c55e;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Animations on scroll */
+    .fade-in { animation: fadeInUp 0.8s ease forwards; }
+    .slide-left { animation: slideInLeft 0.8s ease forwards; }
+    .slide-right { animation: slideInRight 0.8s ease forwards; }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    
+    /* Cards */
+    .card {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 20px;
+      border: 1px solid rgba(34, 197, 94, 0.1);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 20px 50px rgba(34, 197, 94, 0.1);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* WhatsApp button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      animation: float 3s ease-in-out infinite;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+    }
+    
+    /* Form inputs */
+    .form-input {
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+      background: white;
+    }
+    
+    .form-input:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+      outline: none;
+    }
+    
+    /* Spinner */
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    /* Toast */
+    .toast {
+      animation: fadeInUp 0.4s ease;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-weight: 500;
+      pointer-events: auto;
+    }
+    
+    .toast-success {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .toast-error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="bg-white text-gray-800">
+  <div id="app" class="w-full h-full overflow-auto"><!-- NAVBAR -->
+   <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center">
+       <svg width="20" height="20" fill="white" viewbox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+       </svg>
+      </div>
+      <div>
+       <div class="font-bold text-green-800 leading-tight">
+        Greenfield
+       </div>
+       <div class="text-xs text-green-600 font-semibold">
+        Agro Services
+       </div>
+      </div>
+     </div>
+     <div class="hidden md:flex items-center gap-8"><a href="#about" class="text-sm font-medium text-gray-600 hover:text-green-600 transition">About</a> <a href="#benefits" class="text-sm font-medium text-gray-600 hover:text-green-600 transition">Benefits</a> <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-green-600 transition">Contact</a> <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold">Get Demo</button>
+     </div>
+    </div>
+   </nav><!-- HERO SECTION -->
+   <section class="relative w-full py-32 px-4 overflow-hidden" style="background: linear-gradient(160deg, #f0fdf4 0%, #ffffff 30%, #ecfdf5 60%, #f0fdf4 100%);"><!-- Decorative circles -->
+    <div class="absolute top-20 right-10 w-80 h-80 bg-green-200 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-green-300 rounded-full opacity-15 blur-3xl"></div>
+    <div class="max-w-5xl mx-auto text-center relative z-10"><!-- Badge -->
+     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 fade-in"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> <span class="text-sm font-medium text-green-700">Sustainable Energy from India</span>
+     </div><!-- Headline -->
+     <h1 id="hero-headline" class="text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in delay-1"><span class="gradient-text">Clean Energy.</span><br><span class="text-gray-800">Smarter Cooking.</span><br><span class="text-green-600">Better Future.</span></h1><!-- Subheading -->
+     <p id="hero-subtext" class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-12 font-light fade-in delay-2">Save up to 40% on fuel costs with eco-friendly biomass pellets. Turning agricultural waste into affordable, clean energy for your home.</p><!-- CTA Buttons -->
+     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in delay-3"><button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center gap-2"> <i data-lucide="zap" class="w-5 h-5"></i> Get Free Demo </button> <a href="tel:9823375980" class="btn-outline px-8 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center gap-2"> <i data-lucide="phone" class="w-5 h-5"></i> Call Now: 9823375980 </a>
+     </div><!-- Stats -->
+     <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto fade-in delay-3">
+      <div class="text-center">
+       <div class="text-4xl font-bold text-green-600">
+        40%
+       </div>
+       <div class="text-xs text-gray-400 mt-1">
+        Cost Savings
+       </div>
+      </div>
+      <div class="text-center border-x border-green-100">
+       <div class="text-4xl font-bold text-green-600">
+        90%
+       </div>
+       <div class="text-xs text-gray-400 mt-1">
+        Less Smoke
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-4xl font-bold text-green-600">
+        100%
+       </div>
+       <div class="text-xs text-gray-400 mt-1">
+        Eco-Friendly
+       </div>
+      </div>
+     </div><!-- Scroll indicator -->
+     <div class="mt-16 flex justify-center animate-bounce"><a href="#about" class="flex flex-col items-center gap-1 text-green-400"> <span class="text-xs font-medium">Scroll</span> <i data-lucide="chevron-down" class="w-5 h-5"></i> </a>
+     </div>
+    </div>
+   </section><!-- ABOUT SECTION -->
+   <section id="about" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <div class="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
+       WHO WE ARE
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Turning Farm Waste into <span class="gradient-text">Clean Energy</span></h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">Greenfield Agro Services transforms agricultural waste into affordable, clean fuel — empowering farmers and building a sustainable India.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-1">
+       <div class="text-5xl mb-4">
+        🌱
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Eco-Friendly</h3>
+       <p class="text-gray-500">Zero waste. Pure clean energy from nature's leftovers.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-2">
+       <div class="text-5xl mb-4">
+        💰
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">40% Cost Savings</h3>
+       <p class="text-gray-500">Save significantly compared to traditional LPG cylinders.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-3">
+       <div class="text-5xl mb-4">
+        🇮🇳
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Made in India</h3>
+       <p class="text-gray-500">Proudly designed and manufactured in Nashik, Maharashtra.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- WHAT ARE PELLETS -->
+   <section class="py-20 px-4" style="background: linear-gradient(180deg, #f0fdf4, #ffffff);">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-in">
+       <div class="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
+        THE FUEL
+       </div>
+       <h2 class="text-4xl font-bold text-gray-800 mb-6">What are <span class="gradient-text">Biomass Pellets?</span></h2>
+       <p class="text-gray-500 mb-6 leading-relaxed">Biomass pellets are compressed cylinders made from agricultural waste — rice husk, cotton stalks, groundnut shells. They burn cleaner, hotter, and cheaper than traditional fuels.</p>
+       <div class="space-y-4">
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+         </div>
+         <div><span class="font-semibold text-gray-800">Made from agricultural waste</span>
+          <p class="text-sm text-gray-400">Rice husk, cotton stalk, groundnut shells</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+         </div>
+         <div><span class="font-semibold text-gray-800">High-density fuel</span>
+          <p class="text-sm text-gray-400">More energy in compact form</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+         </div>
+         <div><span class="font-semibold text-gray-800">Burns clean</span>
+          <p class="text-sm text-gray-400">Minimal smoke, safer for your family</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in slide-right">
+       <div class="bg-gradient-to-br from-green-100 to-emerald-50 rounded-3xl p-12 aspect-square flex items-center justify-center shadow-lg">
+        <div class="text-center">
+         <div class="text-7xl mb-4">
+          🌾
+         </div>
+         <p class="text-green-700 font-semibold">100% Natural Fuel</p>
+         <p class="text-sm text-green-600 mt-2">Zero chemicals</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- BENEFITS SECTION -->
+   <section id="benefits" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <div class="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
+       WHY BIOMASS PELLETS?
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Benefits That <span class="gradient-text">Matter</span></h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass-card rounded-2xl p-8 card fade-in delay-1 group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-green-200 transition-all"><i data-lucide="trending-down" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Save 40% vs LPG</h3>
+       <p class="text-gray-500">Significantly lower fuel costs for homes and businesses.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 card fade-in delay-2 group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-blue-200 transition-all"><i data-lucide="wind" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Low Smoke</h3>
+       <p class="text-gray-500">Clean combustion means healthier kitchens.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 card fade-in delay-3 group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-amber-200 transition-all"><i data-lucide="box" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Easy Storage</h3>
+       <p class="text-gray-500">Compact pellets take up minimal space.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 card fade-in group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-orange-200 transition-all"><i data-lucide="flame" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">High Efficiency</h3>
+       <p class="text-gray-500">Burns hotter and longer than traditional fuels.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 card fade-in delay-1 group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-emerald-200 transition-all"><i data-lucide="indian-rupee" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Affordable</h3>
+       <p class="text-gray-500">Accessible pricing for everyone.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 card fade-in delay-2 group">
+       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-400 to-lime-500 flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-green-200 transition-all"><i data-lucide="recycle" class="w-7 h-7 text-white"></i>
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Carbon Neutral</h3>
+       <p class="text-gray-500">Waste becomes fuel, not pollution.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- PROBLEM vs SOLUTION -->
+   <section class="py-20 px-4" style="background: linear-gradient(180deg, #f0fdf4, #ffffff);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Problem <span class="text-gray-300">vs</span> <span class="gradient-text">Solution</span></h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="fade-in slide-left">
+       <div class="rounded-2xl p-8 h-full border-l-4 border-red-500" style="background: linear-gradient(135deg, #fef2f2, #fee2e2);">
+        <div class="flex items-center gap-3 mb-6"><i data-lucide="alert-triangle" class="w-6 h-6 text-red-500"></i>
+         <h3 class="text-2xl font-bold text-red-700">The Problem</h3>
+        </div>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3"><i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Expensive LPG</span>
+           <p class="text-sm text-gray-500">Prices keep rising every year</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3"><i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Wasted Farm Residue</span>
+           <p class="text-sm text-gray-500">Burned in fields, causing pollution</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3"><i data-lucide="x-circle" class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Health Hazards</span>
+           <p class="text-sm text-gray-500">Smoke-related diseases in kitchens</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in slide-right">
+       <div class="rounded-2xl p-8 h-full border-l-4 border-green-500" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+        <div class="flex items-center gap-3 mb-6"><i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+         <h3 class="text-2xl font-bold text-green-700">Our Solution</h3>
+        </div>
+        <div class="space-y-4">
+         <div class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Biomass Pellets</span>
+           <p class="text-sm text-gray-500">40% cheaper than LPG</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Waste to Wealth</span>
+           <p class="text-sm text-gray-500">Farm residue becomes valuable fuel</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+          <div><span class="font-semibold text-gray-800">Clean Cooking</span>
+           <p class="text-sm text-gray-500">Smokeless stoves for healthier homes</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- WHO IS IT FOR -->
+   <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Perfect For <span class="gradient-text">Everyone</span></h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-1"><i data-lucide="home" class="w-12 h-12 text-blue-600 mx-auto mb-4"></i>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Homes &amp; Families</h3>
+       <p class="text-gray-500">Save money while breathing cleaner air every day.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-2"><i data-lucide="utensils" class="w-12 h-12 text-orange-600 mx-auto mb-4"></i>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Hotels &amp; Catering</h3>
+       <p class="text-gray-500">Bulk cooking at lower fuel costs for commercial kitchens.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 text-center card fade-in delay-3"><i data-lucide="factory" class="w-12 h-12 text-purple-600 mx-auto mb-4"></i>
+       <h3 class="text-xl font-bold text-gray-800 mb-2">Small Industries</h3>
+       <p class="text-gray-500">Boilers and heating systems powered by biomass.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- OPPORTUNITIES -->
+   <section class="py-20 px-4" style="background: linear-gradient(180deg, #f0fdf4, #ffffff);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <div class="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
+       BUSINESS &amp; IMPACT
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Opportunities That <span class="gradient-text">Transform</span></h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl p-8 card fade-in" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5);"><i data-lucide="users" class="w-8 h-8 text-green-700 mb-4"></i>
+       <h3 class="text-lg font-bold text-green-900 mb-2">SHG Opportunities</h3>
+       <p class="text-sm text-green-800">Self Help Groups can manufacture and distribute pellets.</p>
+      </div>
+      <div class="rounded-2xl p-8 card fade-in delay-1" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);"><i data-lucide="briefcase" class="w-8 h-8 text-blue-700 mb-4"></i>
+       <h3 class="text-lg font-bold text-blue-900 mb-2">Small Business</h3>
+       <p class="text-sm text-blue-800">Start a micro-enterprise with low investment.</p>
+      </div>
+      <div class="rounded-2xl p-8 card fade-in delay-2" style="background: linear-gradient(135deg, #fdf4ff, #f3e8ff);"><i data-lucide="handshake" class="w-8 h-8 text-purple-700 mb-4"></i>
+       <h3 class="text-lg font-bold text-purple-900 mb-2">CSR Partnerships</h3>
+       <p class="text-sm text-purple-800">Partner for impactful clean energy initiatives.</p>
+      </div>
+      <div class="rounded-2xl p-8 card fade-in delay-3" style="background: linear-gradient(135deg, #fefce8, #fef9c3);"><i data-lucide="heart" class="w-8 h-8 text-yellow-700 mb-4"></i>
+       <h3 class="text-lg font-bold text-yellow-900 mb-2">Women Empowerment</h3>
+       <p class="text-sm text-yellow-800">Enable women entrepreneurs in rural areas.</p>
+      </div>
+      <div class="rounded-2xl p-8 card fade-in sm:col-span-2 lg:col-span-2" style="background: linear-gradient(135deg, #f0fdfa, #ccfbf1);"><i data-lucide="leaf" class="w-8 h-8 text-teal-700 mb-4"></i>
+       <h3 class="text-lg font-bold text-teal-900 mb-2">Carbon Reduction</h3>
+       <p class="text-sm text-teal-800">Each ton of pellets prevents 1.5 tons of CO₂ emissions. Join the movement toward a net-zero future.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- GALLERY -->
+   <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800">See It In <span class="gradient-text">Action</span></h2>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center card fade-in cursor-pointer">
+       <div class="text-center">
+        <div class="text-5xl mb-2">
+         🌾
+        </div>
+        <p class="text-sm font-semibold text-green-900">Raw Materials</p>
+       </div>
+      </div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-amber-200 to-yellow-300 flex items-center justify-center card fade-in delay-1 cursor-pointer">
+       <div class="text-center">
+        <div class="text-5xl mb-2">
+         🪵
+        </div>
+        <p class="text-sm font-semibold text-amber-900">Production</p>
+       </div>
+      </div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-orange-200 to-red-200 flex items-center justify-center card fade-in delay-2 cursor-pointer">
+       <div class="text-center">
+        <div class="text-5xl mb-2">
+         🔥
+        </div>
+        <p class="text-sm font-semibold text-orange-900">Stove</p>
+       </div>
+      </div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-blue-200 to-cyan-200 flex items-center justify-center card fade-in delay-3 cursor-pointer">
+       <div class="text-center">
+        <div class="text-5xl mb-2">
+         🏡
+        </div>
+        <p class="text-sm font-semibold text-blue-900">Kitchens</p>
+       </div>
+      </div>
+      <div class="md:col-span-2 aspect-video rounded-2xl bg-gradient-to-br from-green-300 to-teal-300 flex items-center justify-center card fade-in cursor-pointer">
+       <div class="text-center">
+        <div class="text-6xl mb-2">
+         🌱
+        </div>
+        <p class="font-semibold text-green-900">Sustainable Farming</p>
+       </div>
+      </div>
+      <div class="md:col-span-2 aspect-video rounded-2xl bg-gradient-to-br from-lime-200 to-green-300 flex items-center justify-center card fade-in delay-1 cursor-pointer">
+       <div class="text-center">
+        <div class="text-6xl mb-2">
+         ♻️
+        </div>
+        <p class="font-semibold text-green-900">Clean Energy Revolution</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT SECTION -->
+   <section id="contact" class="py-20 px-4" style="background: linear-gradient(180deg, #f0fdf4, #dcfce7);">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <h2 id="contact-heading" class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Book Your <span class="gradient-text">Free Demo</span> Today</h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">Experience the future of clean cooking. Get in touch — we'll bring the demo to you.</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div class="fade-in slide-left">
+       <div class="glass-card rounded-2xl p-8 space-y-6">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Reach Us Directly</h3><a href="tel:9823375980" class="flex items-center gap-4 p-4 rounded-xl hover:bg-green-50 transition-all group">
+         <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors"><i data-lucide="phone" class="w-5 h-5 text-green-600"></i>
+         </div>
+         <div>
+          <div class="text-sm text-gray-400">
+           Phone
+          </div>
+          <div class="font-bold text-gray-800 text-lg">
+           9823375980
+          </div>
+         </div></a> <a href="tel:9373177177" class="flex items-center gap-4 p-4 rounded-xl hover:bg-green-50 transition-all group">
+         <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors"><i data-lucide="phone" class="w-5 h-5 text-green-600"></i>
+         </div>
+         <div>
+          <div class="text-sm text-gray-400">
+           Alternate
+          </div>
+          <div class="font-bold text-gray-800 text-lg">
+           9373177177
+          </div>
+         </div></a> <a href="mailto:amol@greenfield.asia" class="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-all group">
+         <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors"><i data-lucide="mail" class="w-5 h-5 text-blue-600"></i>
+         </div>
+         <div>
+          <div class="text-sm text-gray-400">
+           Email
+          </div>
+          <div class="font-bold text-gray-800">
+           amol@greenfield.asia
+          </div>
+         </div></a>
+        <div class="flex items-center gap-4 p-4 rounded-xl">
+         <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5 text-orange-600"></i>
+         </div>
+         <div>
+          <div class="text-sm text-gray-400">
+           Location
+          </div>
+          <div class="font-bold text-gray-800">
+           Nashik, Maharashtra
+          </div>
+         </div>
+        </div>
+        <div class="p-4 rounded-xl bg-green-50 border border-green-200 text-center">
+         <p class="text-sm text-green-700 font-semibold">💬 Chat with us on WhatsApp anytime!</p>
+        </div>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="fade-in slide-right">
+       <form id="contact-form" class="glass-card rounded-2xl p-8 space-y-6">
+        <h3 class="text-2xl font-bold text-gray-800">Send Message</h3>
+        <div><label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label> <input type="text" id="name" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="Enter your name">
+        </div>
+        <div><label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label> <input type="tel" id="phone" required class="form-input w-full px-4 py-3 rounded-xl" placeholder="Enter phone number">
+        </div>
+        <div><label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label> <textarea id="message" rows="4" class="form-input w-full px-4 py-3 rounded-xl resize-none" placeholder="Tell us what you need..."></textarea>
+        </div><button type="submit" class="btn-primary w-full py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2"> <span id="submit-text">Send Message</span>
+         <div id="spinner" class="spinner hidden"></div></button>
+        <div id="feedback" class="hidden p-4 rounded-xl text-center text-sm font-medium"></div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="py-12 px-4 bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-gray-800">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center">
+        <svg width="20" height="20" fill="white" viewbox="0 0 24 24">
+         <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+        </svg>
+       </div>
+       <div>
+        <div class="font-bold text-lg">
+         Greenfield Agro
+        </div>
+        <p id="footer-tagline" class="text-sm text-gray-400">एक पाऊल शाश्वततेकडे…</p>
+       </div>
+      </div>
+      <div class="flex items-center gap-4"><a href="tel:9823375980" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors"> <i data-lucide="phone" class="w-4 h-4"></i> </a> <a href="mailto:amol@greenfield.asia" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors"> <i data-lucide="mail" class="w-4 h-4"></i> </a> <a href="https://wa.me/919823375980" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors"> <i data-lucide="message-circle" class="w-4 h-4"></i> </a>
+      </div>
+     </div>
+     <div class="mt-6 text-center text-sm text-gray-500">
+      © 2025 Greenfield Agro Services. All rights reserved. | Nashik, Maharashtra
+     </div>
+    </div>
+   </footer><!-- WhatsApp Button --> <a href="https://wa.me/919823375980?text=Hi%20Greenfield!%20I'm%20interested%20in%20biomass%20pellets." target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewbox="0 0 24 24" fill="white">
+     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg></a> <!-- Toast Container -->
+   <div id="toast-container" class="fixed top-6 right-6 z-[1001] pointer-events-none"></div>
+  </div>
+  <script>
+    // Config
+    const defaultConfig = {
+      hero_headline: 'Clean Energy. Smarter Cooking. Better Future.',
+      hero_subtext: 'Save up to 40% on fuel costs with eco-friendly biomass pellets. Turning agricultural waste into affordable, clean energy for your home.',
+      about_title: 'Turning Farm Waste into Clean Energy',
+      contact_heading: 'Book Your Free Demo Today',
+      footer_tagline: 'एक पाऊल शाश्वततेकडे…',
+      background_color: '#f0fdf4',
+      surface_color: '#ffffff',
+      text_color: '#1f2937',
+      primary_action_color: '#22c55e',
+      secondary_action_color: '#16a34a',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+
+    // Element SDK
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => {
+        const c = { ...defaultConfig, ...config };
+        const font = c.font_family || 'Poppins';
+        const base = c.font_size || 16;
+
+        document.body.style.fontFamily = `${font}, 'Poppins', sans-serif`;
+        document.body.style.color = c.text_color;
+
+        if (document.getElementById('hero-headline')) {
+          document.getElementById('hero-headline').textContent = c.hero_headline;
+          document.getElementById('hero-headline').style.fontSize = `${base * 2.2}px`;
+        }
+        if (document.getElementById('hero-subtext')) {
+          document.getElementById('hero-subtext').textContent = c.hero_subtext;
+          document.getElementById('hero-subtext').style.fontSize = `${base}px`;
+        }
+        if (document.getElementById('contact-heading')) {
+          document.getElementById('contact-heading').textContent = c.contact_heading;
+          document.getElementById('contact-heading').style.fontSize = `${base * 2}px`;
+        }
+        if (document.getElementById('footer-tagline')) {
+          document.getElementById('footer-tagline').textContent = c.footer_tagline;
+        }
+
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+          btn.style.background = `linear-gradient(135deg, ${c.primary_action_color}, ${c.secondary_action_color})`;
+        });
+      },
+      mapToCapabilities: (config) => {
+        const c = { ...defaultConfig, ...config };
+        const mkColor = (key) => ({
+          get: () => c[key],
+          set: (v) => { c[key] = v; window.elementSdk.setConfig({ [key]: v }); }
+        });
+        return {
+          recolorables: [
+            mkColor('background_color'),
+            mkColor('surface_color'),
+            mkColor('text_color'),
+            mkColor('primary_action_color'),
+            mkColor('secondary_action_color')
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => c.font_family,
+            set: (v) => { c.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => c.font_size,
+            set: (v) => { c.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        };
+      },
+      mapToEditPanelValues: (config) => {
+        const c = { ...defaultConfig, ...config };
+        return new Map([
+          ['hero_headline', c.hero_headline],
+          ['hero_subtext', c.hero_subtext],
+          ['about_title', c.about_title],
+          ['contact_heading', c.contact_heading],
+          ['footer_tagline', c.footer_tagline]
+        ]);
+      }
+    });
+
+    // Data SDK
+    (async () => {
+      await window.dataSdk.init({ onDataChanged: () => {} });
+    })();
+
+    // Form handling
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !phone) {
+        showFeedback('Please enter name and phone', false);
+        return;
+      }
+
+      const btn = e.target.querySelector('button');
+      const txt = document.getElementById('submit-text');
+      const spin = document.getElementById('spinner');
+
+      btn.disabled = true;
+      txt.textContent = 'Sending...';
+      spin.classList.remove('hidden');
+
+      const result = await window.dataSdk.create({
+        name,
+        phone,
+        message: message || '',
+        submitted_at: new Date().toISOString()
+      });
+
+      btn.disabled = false;
+      txt.textContent = 'Send Message';
+      spin.classList.add('hidden');
+
+      if (result.isOk) {
+        showFeedback('✓ Thank you! We'll contact you soon.', true);
+        document.getElementById('contact-form').reset();
+      } else {
+        showFeedback('Error. Please call us directly.', false);
+      }
+    });
+
+    function showFeedback(msg, isSuccess) {
+      const fb = document.getElementById('feedback');
+      fb.className = `p-4 rounded-xl text-center text-sm font-medium ${isSuccess ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`;
+      fb.textContent = msg;
+      fb.classList.remove('hidden');
+      setTimeout(() => fb.classList.add('hidden'), 4000);
+    }
+
+    // Navbar scroll effect
+    const app = document.getElementById('app');
+    const navbar = document.querySelector('.navbar');
+    app.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', app.scrollTop > 50);
+    });
+
+    // Init lucide
+    lucide.createIcons();
+
+    // Fade in animations on load
+    setTimeout(() => {
+      document.querySelectorAll('[class*="fade-in"]').forEach((el, i) => {
+        setTimeout(() => el.classList.add('animate'), i * 100);
+      });
+    }, 100);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f2f3cdf07703f9d',t:'MTc3NzMwNzY5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
